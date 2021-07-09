@@ -16,4 +16,4 @@ for f in $(find /docker-entrypoint-initdb.d/ -type f -name '*.sql'); do
 	cat "$f" >> /tmp/init.sql
 done
 
-exec mysqld --user=mysql --skip-name-resolve --init-file=/tmp/init.sql
+exec mysqld --disable-log-bin --init-file=/tmp/init.sql

@@ -1,0 +1,5 @@
+#!/bin/sh
+set -eu
+
+mysqld --initialize-insecure
+rm -rf /var/lib/mysql/performance_schema/
