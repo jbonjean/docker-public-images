@@ -2,6 +2,7 @@
 set -eu
 
 IMAGES="
+codimd
 mysql
 "
 
