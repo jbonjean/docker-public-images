@@ -1,0 +1,8 @@
+#!/bin/sh
+set -eu
+
+rm -f /var/run/mysqld/*
+mkdir -p /var/lib/mysql/ /var/run/mysqld/ /docker-entrypoint-initdb.d/
+chown mysql:mysql /var/lib/mysql/ /var/run/mysqld/
+
+# mysqld --user=mysql --initialize

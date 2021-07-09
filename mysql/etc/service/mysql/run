@@ -1,0 +1,19 @@
+#!/bin/sh
+set -eu
+. /usr/lib/runit-lib
+
+cat << EOF > /tmp/init.sql
+CREATE USER IF NOT EXISTS 'root'@'%';
+ALTER USER 'root'@'%' IDENTIFIED WITH caching_sha2_password BY '${MYSQL_ROOT_PASSWORD}';
+ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY '${MYSQL_ROOT_PASSWORD}';
+GRANT ALL ON *.* TO 'root'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+CREATE DATABASE IF NOT EXISTS ${MYSQL_DATABASE};
+USE ${MYSQL_DATABASE};
+EOF
+
+for f in $(find /docker-entrypoint-initdb.d/ -type f -name '*.sql'); do
+	cat "$f" >> /tmp/init.sql
+done
+
+exec mysqld --user=mysql --skip-name-resolve --init-file=/tmp/init.sql
