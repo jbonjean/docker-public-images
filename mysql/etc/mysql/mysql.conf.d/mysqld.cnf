@@ -1,13 +1,19 @@
 [mysqld]
-user		= mysql
+user=mysql
 
-bind-address		= 0.0.0.0
-mysqlx-bind-address	= 0.0.0.0
-key_buffer_size		= 16M
+bind-address=0.0.0.0
+mysqlx-bind-address=0.0.0.0
+key-buffer-size=16M
 
-performance_schema=OFF
+performance-schema=OFF
 default-time-zone='+00:00'
 skip-name-resolve
+skip-host-cache
+skip-log-bin
 
 character-set-server=utf8mb4
 collation-server=utf8mb4_unicode_ci
+
+innodb-flush-log-at-trx-commit=0
+innodb-use-fdatasync=ON
+
