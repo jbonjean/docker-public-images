@@ -1,3 +1,4 @@
-# Public Docker Images Experiments
+# Docker Images
 
-You should probably not use these images.
+* Source for https://hub.docker.com/u/jbonjean
+* Other source available at https://github.com/jbonjean/docker-public-baseimages
