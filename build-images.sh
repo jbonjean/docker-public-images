@@ -4,6 +4,7 @@ set -eu
 IMAGES="
 codimd
 mysql
+volumio
 "
 
 DOCKER_TAG="${DOCKER_TAG:-master}"
